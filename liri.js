@@ -115,7 +115,7 @@ twitterUser.get('statuses/user_timeline',params, function(error, tweet, response
         if(error){
             console.log(error);
         }else{
-            console.log(tweet);
+            //console.log(tweet);
             for (var i = 0; i < tweet.length; i++) {
 
                 console.log("_____________________________________________");
@@ -134,7 +134,7 @@ function movieInfo(movie)
 var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
 
 // This line is just to help us debug against the actual URL.
-console.log(queryUrl);
+//console.log(queryUrl);
 // Then create a request to the queryUrl
 // ...
 request(queryUrl,function(error, response, body) {
@@ -146,7 +146,7 @@ if (!error && response.statusCode === 200) {
     var json = JSON.parse(body);
     console.log("Title of the Movie: "+json.Title);
     console.log("Year the movie came out: "+json.Year);
-    console.log("IMDB Rating of the movie "+json.imdbRating);
+    console.log("IMDB Rating of the movie: "+json.imdbRating);
     console.log("Rotten Tomatoes Rating of the movie: "+json.Ratings[1].Value);
     console.log("Country where the movie was produced: "+json.Country);
     console.log("Language of the movie: "+json.Language);
@@ -205,9 +205,7 @@ function writeToFile(){
   }
 
   // If no error is experienced, we'll log the phrase "Content Added" to our node console.
-  else {
-    console.log("Content Added!");
-  }
+  
 
 });
 
