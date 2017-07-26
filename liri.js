@@ -133,16 +133,11 @@ function movieInfo(movie)
 {	
 var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
 
-// This line is just to help us debug against the actual URL.
-//console.log(queryUrl);
-// Then create a request to the queryUrl
-// ...
-request(queryUrl,function(error, response, body) {
-  // If the request is successful
-  // ...
-if (!error && response.statusCode === 200) {
 
-    // Then log the body from the site!
+request(queryUrl,function(error, response, body) {
+  
+if (!error && response.statusCode === 200) {
+    
     var json = JSON.parse(body);
     console.log("Title of the Movie: "+json.Title);
     console.log("Year the movie came out: "+json.Year);
@@ -168,7 +163,7 @@ function songInfo(song){
   id: "f7ce6d188a0e4269bdfb5e44481922ac",
   secret:"31256554a78a4950bda149a5d2bd0106"
 });
-//console.log(nodeArgs.length);
+
 
 spot.search({ type: 'track', query:  song }, function(err, data) {
   if (err) {
@@ -176,16 +171,14 @@ spot.search({ type: 'track', query:  song }, function(err, data) {
   }
     console.log(data.tracks.items[0]);
 	console.log("---------------------------------------------------");
-                console.log(" ");
-                //console.log("Since you didnt enter a song here is the following: ");
+                console.log(" ");                
                 console.log(" ");
                 console.log("Track Title: " + data.tracks.items[0].name);
                 console.log(" ");
                 console.log("Album Name: " + data.tracks.items[0].artists[0].name);
                 console.log(" ");
                 console.log("Preview URL: " + data.tracks.items[0].preview_url);
-                console.log(" ");
-                //console.log("Preview URL: " + data.tracks.items[0].album.album_type);
+                console.log(" ");               
  
                 console.log("---------------------------------------------------");
         output="Track Title: " + data.tracks.items[0].name+
@@ -198,14 +191,10 @@ spot.search({ type: 'track', query:  song }, function(err, data) {
 
 function writeToFile(){
   fs.appendFile("log.txt", output, function(err) {
-
-  // If an error was experienced we say it.
+  
   if (err) {
     console.log(err);
-  }
-
-  // If no error is experienced, we'll log the phrase "Content Added" to our node console.
-  
+  }  
 
 });
 
